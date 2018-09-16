@@ -3,7 +3,7 @@
 @section('content')
         <div class="container">
 
-            <a type="button" class="btn btn-success" href="#">Добавить пользователя</a>
+            <a type="button" class="btn btn-success" href="{{ url('/admin/user/create') }}">Добавить пользователя</a>
 
             <table class="table table-hover box">
                 <thead>
