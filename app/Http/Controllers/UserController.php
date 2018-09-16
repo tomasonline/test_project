@@ -42,7 +42,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required|min:3',
+            'email' => 'required|min:7',
+            'password' => 'required|min:6',
+            'phone' => 'required|min:10'
+        ]);
+
+        $add = new User();
+        $add->fill($request->all());
+        $add->save();
+//        session()->flash('flash_message', 'Пользователь успешно добавлен!');
+//        return redirect('/admin/user/index');
     }
 
     /**
