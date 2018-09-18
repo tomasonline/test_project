@@ -45,7 +45,7 @@
 
                 <div class="box-footer">
                     <a type="button" class="btn btn-default" href="{{ url('/admin/user/index') }}">Отменить</a>
-                    <input type="submit" class="btn pull-right btn-success " value="Добавить">
+                    <input type="submit" class="btn pull-right btn-info" value="Добавить">
                 </div>
             </form>
         </div>

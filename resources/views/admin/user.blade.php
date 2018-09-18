@@ -2,8 +2,13 @@
 
 @section('content')
         <div class="container">
-
-            <a type="button" class="btn btn-success" href="{{ url('/admin/user/create') }}">Добавить пользователя</a>
+            @if (session()->has('flash_message'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    {{ session()->get('flash_message') }}
+                </div>
+            @endif
+            <a type="button" class="btn btn-info" href="{{ url('/admin/user/create') }}">Добавить пользователя</a>
 
             <table class="table table-hover box">
                 <thead>
@@ -29,6 +34,9 @@
 
                 </thead>
             </table>
+
+                {{ $users->links() }}
+
         </div>
 @endsection
 

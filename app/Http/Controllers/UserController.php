@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 Use App\User;
 
 class UserController extends Controller
@@ -19,8 +21,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        //return $users;
+        $users = DB::table('users')->paginate(15);
+
         return view('admin.user', compact('users'));
     }
 
@@ -46,14 +48,17 @@ class UserController extends Controller
             'name' => 'required|min:3',
             'email' => 'required|min:7',
             'password' => 'required|min:6',
-            'phone' => 'required|min:10'
+            'phone' => 'required|min:10',
         ]);
-
-        $add = new User();
-        $add->fill($request->all());
+        $add = new User(array(
+            'password' => Hash::make($request['password']),
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'phone' => $request['phone'],
+        ));
         $add->save();
-//        session()->flash('flash_message', 'Пользователь успешно добавлен!');
-//        return redirect('/admin/user/index');
+        session()->flash('flash_message', 'Пользователь успешно добавлен!');
+        return redirect('/admin/user/index');
     }
 
     /**
