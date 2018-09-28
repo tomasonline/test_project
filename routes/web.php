@@ -17,8 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/admin', 'HomeController@index');
+Route::get('admin', 'HomeController@index');
 
-Route::get('/admin/user/index', 'UserController@index');
-Route::get('/admin/user/create', 'UserController@create');
-Route::post('/admin/user/create', 'UserController@store');
+Route::get('admin/user/index', 'UserController@index');
+Route::get('admin/user/create', 'UserController@create');
+Route::post('admin/user/create', 'UserController@store');
+
+Route::get('admin/user/show/{id}', 'UserController@show');

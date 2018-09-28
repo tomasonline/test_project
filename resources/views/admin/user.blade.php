@@ -22,7 +22,11 @@
                 <tbody>
                 @foreach($users as $user)
                 <tr>
-                        <td>{{ $user-> id }}</td>
+                        <td>
+                            <a type="button" class="btn btn-primary" href="{{ url('/admin/user/show', $user->id) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
+                            <a type="button" class="btn btn-warning" href="{{ url('/admin/user/edit', $user->id) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a type="button" class="btn btn-danger" href="{{ url('/admin/user/destroy', $user->id) }}"><span class="glyphicon glyphicon-trash"></span></a>
+                        </td>
                         <td>{{ $user-> name }}</td>
                         <td>{{ $user-> email }}</td>
                         <td>{{ $user-> phone }}</td>
